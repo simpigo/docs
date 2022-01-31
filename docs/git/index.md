@@ -59,6 +59,7 @@ git checkout -b xxx // 新建并切换分支
 git push origin login	// 将本地分支推送到远程
 git branch -d xxx // 删除本地分支
 git push origin -d[--delete] xxx // 删除远程分支
+git branch -M xxx // 修改本地分支名称
 ```
 
 ## Git 迁移仓库
