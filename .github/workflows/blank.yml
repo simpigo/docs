@@ -4,16 +4,17 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  build-deploy:
+    name: docs
     runs-on: ubuntu-latest
     steps:
-    - name: checkout
-    - uses: actions/checkout@main
+      - name: checkout
+      - uses: actions/checkout@v2
 
-    - name: build&deploy
-      uses: JamesIves/github-pages-deploy-action@master
-      env:
-        ACCESS_TOKEN: ${{ secrets.WORKFLOW_TOKEN}}
-        BRANCH: gh-pages
-        FOLDER: build
-        BUILD_SCRIPT: npm install && npm run build
+      - name: build&deploy
+        uses: JamesIves/github-pages-deploy-action@main
+        env:
+          ACCESS_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: build
+          BUILD_SCRIPT: npm install && npm run build
