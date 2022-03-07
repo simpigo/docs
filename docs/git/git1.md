@@ -1,4 +1,3 @@
 ## git 1
 
-- git test 111
-- testtesttestttttt
+- 自动发布测试
