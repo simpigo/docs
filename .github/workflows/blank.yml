@@ -9,12 +9,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@master
 
-      - name: build&deploy
-        uses: JamesIves/github-pages-deploy-action@v4.2.3
+      - name: 安装 Node
+        users: actions/setup-node@v1
+        with:
+          node-version: 14.18.3
+
+      - name: 安装依赖
+        run: npm install
+
+      - name: 打包
+        run: npm run build
+
+      - name: 发布
+        uses: easingthemes/ssh-deploy@2.2.1
         env:
-          ACCESS_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: build
-          BUILD_SCRIPT: npm install && npm run build
+          ACCESS_TOKEN: ${{ secrets.PRIVATE_KEY }}
+          ARGS: '-avzr --delete'
+          SOURCE: '../../docs/.vitepress/dist/'
+          REMOTE_HOST: ${{ SECRETS.REMOTE_HOST }}
+          REMOTE_USER: 'root'
+          TARGET: '/www/wwwroot/lznote/'
