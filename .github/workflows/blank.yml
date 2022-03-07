@@ -22,7 +22,7 @@ jobs:
         run: npm run build
 
       - name: 发布
-        uses: easingthemes/ssh-deploy@2.2.1
+        uses: easingthemes/ssh-deploy@v2.2.11
         env:
           ACCESS_TOKEN: ${{ secrets.PRIVATE_KEY }}
           ARGS: '-avzr --delete'
