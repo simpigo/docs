@@ -27,6 +27,6 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
           ARGS: '-avzr --delete'
           SOURCE: '.vitepress/dist'
-          REMOTE_HOST: ${{ SECRETS.REMOTE_HOST }}
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: 'root'
-          TARGET: '/www/wwwroot/lznote/'
+          TARGET: '/www/wwwroot/lznote'
