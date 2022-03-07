@@ -5,14 +5,13 @@ on:
 
 jobs:
   build-deploy:
-    name: docs
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
+      - name: 拉取代码
         uses: actions/checkout@master
 
       - name: 安装 Node
-        users: actions/setup-node@v1
+        uses: actions/setup-node@v1
         with:
           node-version: 14.18.3
 
